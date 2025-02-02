@@ -17,7 +17,7 @@ public:
 	cMain();
 	~cMain();
 
-public:
+private:
 	int iFieldWidth = 9;
 	int iFieldHeight = 9;
 	wxString buttonString = "";

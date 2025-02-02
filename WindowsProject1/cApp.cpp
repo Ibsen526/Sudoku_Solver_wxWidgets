@@ -19,6 +19,5 @@ bool cApp::OnInit()
 
 	frame->Show();
 
-
 	return true;
 }

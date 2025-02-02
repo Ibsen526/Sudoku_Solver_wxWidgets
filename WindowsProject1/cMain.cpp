@@ -2,8 +2,6 @@
 
 cMain::cMain() : wxFrame(nullptr, 9999, "Sudoku", wxPoint(30,30), wxSize(670,740))
 {
-	//CreateField();
-
 	//Sudoku Button field generation
 	wxFont font(28, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_ITALIC, wxFONTWEIGHT_NORMAL, false);
 
@@ -23,7 +21,6 @@ cMain::cMain() : wxFrame(nullptr, 9999, "Sudoku", wxPoint(30,30), wxSize(670,740
 
 			arrayButton[i * iFieldWidth + j] = new wxButton(this, 10000 + (i * iFieldWidth + j), "", wxPoint(i * 70 + AbstandX, j * 70 + AbstandY), wxSize(70, 70));
 			arrayButton[i * iFieldWidth + j]->SetFont(font);
-			//arrayButton[i * iFieldWidth + j]->SetBitmapDisabled(bitmapDisabled);
 
 			if (arrayField[j][i] != 0)
 			{
@@ -37,7 +34,7 @@ cMain::cMain() : wxFrame(nullptr, 9999, "Sudoku", wxPoint(30,30), wxSize(670,740
 	}
 	Bind(wxEVT_BUTTON, &cMain::OnButtonClicked, this);
 
-	//Menue
+	//Menu
 	wxMenu* menuSolve = new wxMenu;
 	menuSolve->AppendRadioItem(5007, "&w/ Path", "You will see how it solves the Sudoku");
 	menuSolve->AppendRadioItem(5008, "&w/o Path", "It will just solve it in the background");
@@ -73,7 +70,10 @@ cMain::cMain() : wxFrame(nullptr, 9999, "Sudoku", wxPoint(30,30), wxSize(670,740
 
 cMain::~cMain()
 {
-	//delete[] arrayButton; 
+	for (int i = 0; i < 81; i++)
+	{
+		delete arrayButton[i];
+	}
 }
 
 void cMain::OnButtonClicked(wxCommandEvent& evt) //wxCommandEvent
